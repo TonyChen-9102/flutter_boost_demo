@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".page.FirstActivity">
+
+    <TextView
+        android:id="@+id/tvParams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="params" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="参数返回" />
+
+    <Button
+        android:id="@+id/buttonBack2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转flutter，有参数，接收返回数据" />
+    <Button
+        android:id="@+id/buttonBack3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转native，有参数，接收返回数据" />
+</LinearLayout>
