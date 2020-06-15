@@ -30,9 +30,11 @@ class FlutterMainPageState extends State<FlutterMainPage> {
             child: Text("跳转flutter;有传参；接收返回数据"),
             onPressed: () {
               FlutterBoost.singleton.open(FIRST_PAGE,
+                  //传参
                   urlParams: <String, dynamic>{
                     "param1": "111"
                   }).then((Map<dynamic, dynamic> value) {
+                //获取回参
                 setValue(value);
               });
             },

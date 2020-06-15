@@ -63,7 +63,7 @@ public class FirstActivity extends Activity {
                 Map<String, Object> params = new HashMap<>();
                 params.put("param1", "FirstActivity parames");
                 PageRouter.openPageByUrl(FirstActivity.this,
-                        PageRouter.getNativeWholePath(PageRouter.NATIVE_MAIN_SECOND_PAGE),
+                        PageRouter.getArouterToBoost(PageRouter.NATIVE_MAIN_SECOND_PAGE),
                         params, 3);
             }
         });

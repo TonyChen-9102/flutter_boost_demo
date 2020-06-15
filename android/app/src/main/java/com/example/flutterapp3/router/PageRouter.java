@@ -28,7 +28,9 @@ public class PageRouter {
     public static final String NATIVE_MAIN_SECOND_PAGE = "/main/secondPage";
 
     public static boolean openPageByUrl(Context context, String url, Map<String, Object> params, int requestCode) {
+        //获取域名
         String path = url.split("\\?")[0];
+        //获取协议
         String protocol = url.split("://")[0];
 
         if (TextUtils.equals(PROTOCOL_FLUTTER, protocol)) {
@@ -42,14 +44,7 @@ public class PageRouter {
             }
             return true;
         } else if (TextUtils.equals(PROTOCOL_NATIVE, protocol)) {
-            String nativePath = null;
-            if (!TextUtils.isEmpty(path)) {
-                String[] aar = path.split("://");
-                if (aar.length > 1) {
-                    nativePath = aar[1];
-                    nativePath = "/" + nativePath;
-                }
-            }
+            String nativePath = getBoostToRouter(path);
             if (TextUtils.isEmpty(nativePath)) {
                 return false;
             }
@@ -128,7 +123,30 @@ public class PageRouter {
         return result;
     }
 
-    public static String getNativeWholePath(String nativePath) {
+    /**
+     * arouter地址转换成fluter-boost地址
+     *
+     * @param nativePath
+     * @return
+     */
+    public static String getArouterToBoost(String nativePath) {
         return PageRouter.PROTOCOL_NATIVE + ":/" + nativePath;
+    }
+
+    /**
+     * fluter-boost地址转换成Arouter地址
+     * @param path
+     * @return
+     */
+    public static String getBoostToRouter(String path) {
+        String nativePath = null;
+        if (!TextUtils.isEmpty(path)) {
+            String[] aar = path.split("://");
+            if (aar.length > 1) {
+                nativePath = aar[1];
+                nativePath = "/" + nativePath;
+            }
+        }
+        return nativePath;
     }
 }

@@ -17,16 +17,18 @@ class MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    //注册页面
     FlutterBoost.singleton.registerPageBuilders(<String, PageBuilder>{
       MAIN_PAGE: (String pageName, Map<dynamic, dynamic> params, String _) =>
           FlutterMainPage(),
       FIRST_PAGE: (String pageName, Map<dynamic, dynamic> params, String _) =>
           FlutterFirstPage(params: params),
     });
-
+    //监听页面状态
     FlutterBoost.singleton.addBoostNavigatorObserver(BoostNavigatorObserver());
   }
 
+  //监听页面跳转情况
   void _onRoutePushed(
     String pageName,
     String uniqueId,
@@ -39,6 +41,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "boost demo",
+      //初始化
       builder: FlutterBoost.init(postPush: _onRoutePushed),
       home: FlutterMainPage(),
     );

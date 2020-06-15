@@ -19,6 +19,7 @@ public class MyApplication extends FlutterApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        //初始化
         Platform platform = new FlutterBoost.ConfigBuilder(this, router)
                 .isDebug(true)
                 .whenEngineStart(FlutterBoost.ConfigBuilder.ANY_ACTIVITY_CREATED)
@@ -30,6 +31,7 @@ public class MyApplication extends FlutterApplication {
         ARouter.init(this);
     }
 
+    //监听跳转
     INativeRouter router = new INativeRouter() {
         @Override
         public void openContainer(Context context, String url, Map<String, Object> urlParams, int requestCode, Map<String, Object> exts) {
@@ -37,7 +39,7 @@ public class MyApplication extends FlutterApplication {
             PageRouter.openPageByUrl(context, assembleUrl, urlParams,requestCode);
         }
     };
-
+    //监听状态
     FlutterBoost.BoostLifecycleListener boostLifecycleListener = new FlutterBoost.BoostLifecycleListener() {
         @Override
         public void beforeCreateEngine() {

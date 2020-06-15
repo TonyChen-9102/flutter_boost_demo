@@ -19,6 +19,7 @@ class FlutterFirstPage extends StatelessWidget {
           RaisedButton(
             child: Text("返回参数"),
             onPressed: () {
+              //关闭并返回参数
               final BoostContainerSettings settings =
                   BoostContainer.of(context).settings;
               FlutterBoost.singleton.close(settings.uniqueId,
