@@ -44,3 +44,4 @@ app.*.map.json
 
 #other
 pubspec.lock
+.gradle
