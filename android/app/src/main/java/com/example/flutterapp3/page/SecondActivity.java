@@ -13,6 +13,7 @@ import com.example.flutterapp3.router.PageRouter;
 
 import java.util.HashMap;
 import java.util.Map;
+
 @Route(path = PageRouter.NATIVE_MAIN_SECOND_PAGE)
 public class SecondActivity extends Activity {
     TextView textView;
@@ -38,8 +39,7 @@ public class SecondActivity extends Activity {
             public void onClick(View v) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("result", "SecondActivity result");
-                setResult(RESULT_OK, PageRouter.setNativeBackResult(map));
-                finish();
+                PageRouter.close(SecondActivity.this, map);
             }
         });
     }
@@ -49,6 +49,6 @@ public class SecondActivity extends Activity {
         if (intent == null) {
             return;
         }
-        params = (Map<String, Object>) intent.getSerializableExtra(PageRouter.NATIVR_PARAM_KEY);
+        params = PageRouter.getIntentToMap2(intent);
     }
 }

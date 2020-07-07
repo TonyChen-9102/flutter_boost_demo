@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boost/container/boost_container.dart';
-import 'package:flutter_boost/flutter_boost.dart';
+import 'package:flutterboostdemo/router.dart';
 
 class FlutterFirstPage extends StatelessWidget {
   final Map<dynamic, dynamic> params;
@@ -20,9 +19,7 @@ class FlutterFirstPage extends StatelessWidget {
             child: Text("返回参数"),
             onPressed: () {
               //关闭并返回参数
-              final BoostContainerSettings settings =
-                  BoostContainer.of(context).settings;
-              FlutterBoost.singleton.close(settings.uniqueId,
+              Router.close(context,
                   result: <String, dynamic>{'result': 'data from fist page'});
             },
           ),

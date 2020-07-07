@@ -44,8 +44,7 @@ public class FirstActivity extends Activity {
             public void onClick(View v) {
                 Map<String, Object> map = new HashMap<>();
                 map.put("result", "FirstActivity result");
-                setResult(RESULT_OK, PageRouter.setNativeBackResult(map));
-                finish();
+                PageRouter.close(FirstActivity.this, map);
             }
         });
         buttonBack2.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +52,7 @@ public class FirstActivity extends Activity {
             public void onClick(View v) {
                 Map<String, Object> params = new HashMap<>();
                 params.put("param1", "FirstActivity parames");
-                PageRouter.openPageByUrl(FirstActivity.this, PageRouter.FLUTTER_FIRST_PAGE,
+                PageRouter.open(FirstActivity.this, PageRouter.FLUTTER_FIRST_PAGE,
                         params, 3);
             }
         });
@@ -62,8 +61,7 @@ public class FirstActivity extends Activity {
             public void onClick(View v) {
                 Map<String, Object> params = new HashMap<>();
                 params.put("param1", "FirstActivity parames");
-                PageRouter.openPageByUrl(FirstActivity.this,
-                        PageRouter.getArouterToBoost(PageRouter.NATIVE_MAIN_SECOND_PAGE),
+                PageRouter.open(FirstActivity.this, PageRouter.NATIVE_MAIN_SECOND_PAGE,
                         params, 3);
             }
         });
@@ -74,13 +72,13 @@ public class FirstActivity extends Activity {
         if (intent == null) {
             return;
         }
-        params = (Map<String, Object>) intent.getSerializableExtra(PageRouter.NATIVR_PARAM_KEY);
+        params = PageRouter.getIntentToMap2(intent);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        params = PageRouter.getNativeBackResult(data);
+        params = PageRouter.getIntentToMap(data);
         if (params != null) {
             tvParams.setText("返回参数：" + params.toString());
         }

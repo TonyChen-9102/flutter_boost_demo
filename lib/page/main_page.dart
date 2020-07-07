@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boost/flutter_boost.dart';
 
 import '../router.dart';
 
@@ -29,11 +28,10 @@ class FlutterMainPageState extends State<FlutterMainPage> {
           RaisedButton(
             child: Text("跳转flutter;有传参；接收返回数据"),
             onPressed: () {
-              FlutterBoost.singleton.open(FIRST_PAGE,
-                  //传参
-                  urlParams: <String, dynamic>{
-                    "param1": "111"
-                  }).then((Map<dynamic, dynamic> value) {
+              Router.open(FIRST_PAGE,
+                      //传参
+                      urlParams: <String, dynamic>{"param1": "111"})
+                  .then((Map<dynamic, dynamic> value) {
                 //获取回参
                 setValue(value);
               });
@@ -42,10 +40,11 @@ class FlutterMainPageState extends State<FlutterMainPage> {
           RaisedButton(
             child: Text("跳转native;有传参；接收返回数据"),
             onPressed: () {
-              FlutterBoost.singleton.open(NATIVE_PAGE,
-                  urlParams: <String, dynamic>{
-                    "param1": "333"
-                  }).then((Map<dynamic, dynamic> value) {
+              Router.open(NATIVE_PAGE,
+                      //传参
+                      urlParams: <String, dynamic>{"param1": "333"})
+                  .then((Map<dynamic, dynamic> value) {
+                //获取回参
                 setValue(value);
               });
             },
